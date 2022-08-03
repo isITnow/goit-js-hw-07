@@ -33,13 +33,14 @@ function onGalleryLinkClick(evt) {
     const modalEl = basicLightbox.create(`
     <img src="${largeImgUrl}" width="800" height="600">
 `);
-
     modalEl.show();
 
     window.addEventListener('keydown', onKeyEscPress);
     function onKeyEscPress(evt) {
+        console.log(evt);
         if (evt.code === 'Escape') {
             modalEl.close();
         }
     }
+    // window.removeEventListener('keydown', onKeyEscPress);
 }

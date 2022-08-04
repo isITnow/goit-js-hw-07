@@ -47,7 +47,6 @@ function onGalleryLinkClick(evt) {
     modalEl.show();
 
     function onKeyEscPress(evt) {
-        console.log(evt);
         if (evt.code === 'Escape') {
             modalEl.close();
         }

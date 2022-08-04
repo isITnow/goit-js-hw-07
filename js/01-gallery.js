@@ -30,17 +30,26 @@ function onGalleryLinkClick(evt) {
         return;
     }
     const largeImgUrl = evt.target.dataset.source;
-    const modalEl = basicLightbox.create(`
+
+    const modalEl = basicLightbox.create(
+        `
     <img src="${largeImgUrl}" width="800" height="600">
-`);
+`,
+        {
+            onShow: () => {
+                window.addEventListener('keydown', onKeyEscPress);
+            },
+            onClose: () => {
+                window.removeEventListener('keydown', onKeyEscPress);
+            },
+        },
+    );
     modalEl.show();
 
-    window.addEventListener('keydown', onKeyEscPress);
     function onKeyEscPress(evt) {
         console.log(evt);
         if (evt.code === 'Escape') {
             modalEl.close();
         }
     }
-    // window.removeEventListener('keydown', onKeyEscPress);
 }
